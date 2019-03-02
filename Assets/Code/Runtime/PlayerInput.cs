@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
 
     Rigidbody2D mRidgidbody;
-    public float mJumpHight;
 
-	void Start ()
+    public float mJumpHight = 5.0f;
+    public float mRunSpeed = 2.0f;
+
+    void Start ()
     {
         mRidgidbody = GetComponent<Rigidbody2D>();
     }
@@ -15,12 +17,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * Time.deltaTime);
+            transform.Translate(Vector3.right * mRunSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(Vector3.left * Time.deltaTime);
+            transform.Translate(Vector3.left * mRunSpeed * Time.deltaTime);
         }
 
 
