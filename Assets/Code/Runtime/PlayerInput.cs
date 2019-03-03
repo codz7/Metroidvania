@@ -7,20 +7,20 @@ public class PlayerInput : MonoBehaviour
 
     public float mJumpHight = 5.0f;
     public float mRunSpeed = 2.0f;
-    	
+    
 	void Update ()
     {
         if (Input.GetAxis("Horizontal") > 0)
         {
-            transform.Translate(Vector3.right * mRunSpeed * Time.deltaTime);
+            mRidgidbody.transform.Translate(Vector3.right * mRunSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
         }
 
         if (Input.GetAxis("Horizontal") < 0)
         {
-            transform.Translate(Vector3.left * mRunSpeed * Time.deltaTime);
+            mRidgidbody.transform.Translate(Vector3.left * mRunSpeed * -Input.GetAxis("Horizontal") * Time.deltaTime);
         }
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             mRidgidbody.AddForce(Vector2.up * mJumpHight, ForceMode2D.Impulse);
         }
